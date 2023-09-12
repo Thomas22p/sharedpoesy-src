@@ -11,7 +11,7 @@ defineProps({
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
     <h3>
-      You’ve successfully created a project with
+      You've successfully created a project with
       <a href="https://fr.wikipedia.org/wiki/Thomas_Pesquet" target="_blank" rel="noopener">Thomas</a>
     </h3>
   </div>
