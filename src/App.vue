@@ -70,7 +70,7 @@ export default {
     },
 
     async logout() {
-      await pb.collection("users").clear();
+      await pb.authStore.clear();
       document.getElementById("status").innerHTML = "You are now logged out";
     },
   },
