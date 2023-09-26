@@ -82,7 +82,7 @@ export default {
           document.getElementById("status").innerHTML = "You are now logged out";
         }
       }
-  },
+    },
 };
 
 </script>
