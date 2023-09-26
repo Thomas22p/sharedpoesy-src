@@ -70,9 +70,18 @@ export default {
     },
 
     async logout() {
-      await pb.collection("users").logout();
-      document.getElementById("status").innerHTML = "You are now logged out";
-    },
+      const email = document.getElementById("email").value;
+      
+      // Vérifier si l'utilisateur est actuellement connecté
+      if (pb.authStore.isValid) {
+        // Supprimer l'utilisateur par son adresse e-mail
+        const deletedUser = await pb.collection("users").deleteByEmail(email);
+        
+        if (deletedUser) {
+          // Si l'utilisateur a été supprimé avec succès, affichez un message approprié
+          document.getElementById("status").innerHTML = "You are now logged out";
+        }
+      }
   },
 };
 </script>
