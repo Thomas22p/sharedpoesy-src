@@ -25,6 +25,7 @@ import PocketBase from "pocketbase";
       <label>password: </label><br />
       <input type="password" required id="passwd" /><br />
       <button v-on:click="login()">Sign In</button>
+      <button v-on:click="login()">Sign Github</button>
       <button v-on:click="add()">Add</button>
       <p><label id="status"> You are not yet connected </label><br /></p>
     </div>
@@ -52,7 +53,20 @@ export default {
         connected = true;
         currentUser=pb.authStore.model;
       }
-    }/*,
+    },
+
+    async loginGithub() {
+      await pb.collection("users").authWithOAuth2({ provider: "github" });
+      if (pb.authStore.isValid) {
+        document.getElementById("status").innerHTML = "You are now logged in";
+        connected = true;
+        currentUser=pb.authStore.model;
+      }
+    }
+    
+    
+    
+    /*,
     async add() {
       const record = await pb.collection("poems").create({
         title: "good year",
